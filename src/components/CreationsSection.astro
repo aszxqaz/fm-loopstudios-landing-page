@@ -1,0 +1,58 @@
+---
+import data from "../data.json";
+import { getUrl } from "../util/util";
+---
+
+<section class="my-24 xl:my-40">
+  <div class="constrained md:py-5">
+    <div
+      class="flex justify-center xl:justify-between items-center mb-12 md:mb-8 xl:mb-20"
+    >
+      <h2 class="heading text-center md:text-5xl">Our creations</h2>
+      <a
+        href="#"
+        class="max-xl:hidden px-[2.857em] py-[0.929em] text-[0.875rem] tracking-[0.357em] uppercase border border-black"
+      >
+        See All
+      </a>
+    </div>
+    <div
+      class="grid auto-rows-[7.5rem] gap-6 lg:grid-cols-4 lg:auto-rows-auto lg:gap-8"
+    >
+      {
+        data.creations.map((creation) => (
+          <a
+            href="#"
+            class={`flex items-end relative p-5 bg-linear-to-r from-black/70 to-black/0 to-75% lg:aspect-[0.57] md:px-10 xl:px-10 xl:py-8`}
+          >
+            <picture class="absolute inset-0 w-full h-full -z-50 ">
+              <source
+                srcset={getUrl(creation.images.desktop)}
+                media="(min-width: 64rem)"
+              />
+              <source srcset={getUrl(creation.images.mobile)} />
+              <img
+                class="h-full w-full object-cover object-top"
+                src={getUrl(creation.images.mobile)}
+              />
+            </picture>
+            <div class="">
+              <span
+                set:html={creation.html}
+                class="heading text-2xl text-white xl:text-3xl"
+              />
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    <div class="grid place-items-center mt-8">
+      <a
+        href="#"
+        class="xl:hidden px-[2.857em] py-[0.929em] text-[0.875rem] tracking-[0.357em] uppercase border border-black"
+      >
+        See All
+      </a>
+    </div>
+  </div>
+</section>

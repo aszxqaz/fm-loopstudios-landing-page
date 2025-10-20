@@ -1,0 +1,34 @@
+---
+import LogoSVG from "../assets/icons/logo.svg";
+import data from "../data.json";
+---
+
+<footer class="py-14 bg-black text-white md:py-11">
+  <div
+    class="flex flex-col items-center gap-10 constrained md:flex-row md:justify-between"
+  >
+    <nav class="flex flex-col items-center gap-10 md:items-start md:gap-6">
+      <a href="#" aria-label="Home">
+        <LogoSVG class="w-[9rem]" aria-hidden="true" />
+      </a>
+      <div class="flex flex-col items-center gap-4 md:flex-row md:flex-wrap">
+        {data.links.map((link) => <a href="#">{link}</a>)}
+      </div>
+    </nav>
+    <div
+      class="shrink-0 flex flex-col items-center gap-4 md:items-end md:gap-6"
+    >
+      <div class="flex items-center gap-4">
+        {
+          data.socials.map((social) => (
+            <a href="#">
+              <span class="sr-only">{social.label}</span>
+              <img alt="" src={social.iconSrc} class="w-6" aria-hidden="true" />
+            </a>
+          ))
+        }
+      </div>
+      <p class="opacity-50">&copy; 2021 Loopstudios. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
