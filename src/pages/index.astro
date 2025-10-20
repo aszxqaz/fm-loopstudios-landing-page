@@ -5,6 +5,7 @@ import heroImageMobile from "../assets/images/mobile/image-hero.jpg";
 import MenuToggle from "../components/MenuToggle";
 import data from "../data.json";
 import "../styles/global.css";
+import { getUrl } from "../util/util";
 ---
 
 <html lang="en">
@@ -101,7 +102,7 @@ import "../styles/global.css";
             </div>
             <div class="-order-1 xl:flex-73">
               <img
-                src="/images/desktop/interactive.jpg"
+                src={getUrl("/images/desktop/interactive.jpg")}
                 class="w-full h-[284px] xl:h-[500px] object-cover object-top"
               />
             </div>
@@ -129,17 +130,17 @@ import "../styles/global.css";
               data.creations.map((creation) => (
                 <a
                   href="#"
-                  class={`flex items-end relative p-5 bg-linear-to-r from-black/60 to-black/0 to-75% lg:aspect-[0.57] md:px-10 xl:px-10 xl:py-8`}
+                  class={`flex items-end relative p-5 bg-linear-to-r from-black/70 to-black/0 to-75% lg:aspect-[0.57] md:px-10 xl:px-10 xl:py-8`}
                 >
                   <picture class="absolute inset-0 w-full h-full -z-50 ">
                     <source
-                      srcset={creation.images.desktop}
+                      srcset={getUrl(creation.images.desktop)}
                       media="(min-width: 64rem)"
                     />
-                    <source srcset={creation.images.mobile} />
+                    <source srcset={getUrl(creation.images.mobile)} />
                     <img
                       class="h-full w-full object-cover object-top"
-                      src={creation.images.mobile}
+                      src={getUrl(creation.images.mobile)}
                     />
                   </picture>
                   <div class="">
@@ -186,7 +187,12 @@ import "../styles/global.css";
               data.socials.map((social) => (
                 <a href="#">
                   <span class="sr-only">{social.label}</span>
-                  <img src={social.iconSrc} class="w-6" aria-hidden="true" />
+                  <img
+                    alt=""
+                    src={social.iconSrc}
+                    class="w-6"
+                    aria-hidden="true"
+                  />
                 </a>
               ))
             }
