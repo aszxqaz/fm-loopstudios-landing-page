@@ -1,0 +1,201 @@
+---
+import LogoSVG from "../assets/icons/logo.svg";
+import heroImageDesktop from "../assets/images/desktop/image-hero.jpg";
+import heroImageMobile from "../assets/images/mobile/image-hero.jpg";
+import MenuToggle from "../components/MenuToggle";
+import data from "../data.json";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Astro</title>
+  </head>
+  <body class="text-base">
+    <header class="min-h-screen relative bg-black/40 text-white">
+      <picture>
+        <source srcset={heroImageDesktop.src} media="(min-width: 48rem)" />
+        <source srcset={heroImageMobile.src} />
+        <img
+          src={heroImageMobile.src}
+          alt=""
+          class="xl:block absolute -z-50 inset=0 w-full h-full object-cover saturate-125 contrast-125 brightness-90"
+        />
+      </picture>
+
+      <div class="absolute inset-0 px-6 md:px-20">
+        <div class="relative mx-auto max-w-[69.375rem] h-full">
+          <nav
+            aria-label="Primary"
+            class:list={[
+              "absolute left-0 right-0 top-10 md:top-16",
+              "flex items-center justify-between",
+            ]}
+          >
+            <a href="#" aria-label="Home" class="relative z-50">
+              <LogoSVG class="w-[9rem] md:w-[12rem]" aria-hidden="true" />
+            </a>
+            <div class="hidden xl:flex xl:gap-8">
+              {
+                data.links.map((link) => (
+                  <a href="#" class="">
+                    {link}
+                  </a>
+                ))
+              }
+            </div>
+            <div class="xl:hidden">
+              <MenuToggle client:load links={data.links} />
+            </div>
+          </nav>
+          <div
+            class="pointer-events-none absolute inset-0 grid items-center justify-center xl:justify-start"
+          >
+            <div
+              class="my-auto pt-5 pb-3 px-6 border-2 border-white md:p-10 md:pb-6 max-w-[21.25rem] md:max-w-[40.625rem] md:mb-[22vh]"
+            >
+              <p class="heading text-[2.5rem] text-balance md:text-7xl">
+                {data.hero.title}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="constrained my-24 xl:my-40">
+        <div class="mx-auto max-w-4xl overflow-clip xl:max-w-[69.375rem]">
+          <div class="flex flex-col xl:flex-row xl:items-end xl:-mr-40">
+            <div class="xl:flex-54">
+              <div class="xl:-ml-40 xl:mr-40">
+                <div
+                  class="text-center bg-white pt-12 px-6 md:px-0 xl:text-start xl:pl-24 xl:pt-24"
+                >
+                  <h2 class="heading mb-6 md:text-5xl text-balance">
+                    The leader in interactive VR
+                  </h2>
+                  <p
+                    class="leading-[1.65] opacity-50 max-xl:max-w-2xl max-xl:mx-auto"
+                  >
+                    Founded in 2011, Loopstudios has been producing world-class
+                    virtual reality projects for some of the best companies
+                    around the globe. Our award-winning creations have
+                    transformed businesses through digital experiences that bind
+                    to their brand.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="-order-1 xl:flex-73">
+              <img
+                src="/images/desktop/interactive.jpg"
+                class="w-full h-[284px] xl:h-[500px] object-cover object-top"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="my-24 xl:my-40">
+        <div class="constrained md:py-5">
+          <div
+            class="flex justify-center xl:justify-between items-center mb-12 md:mb-8 xl:mb-20"
+          >
+            <h2 class="heading text-center md:text-5xl">Our creations</h2>
+            <a
+              href="#"
+              class="max-xl:hidden px-[2.857em] py-[0.929em] text-[0.875rem] tracking-[0.357em] uppercase border border-black"
+            >
+              See All
+            </a>
+          </div>
+          <div
+            class="grid auto-rows-[7.5rem] gap-6 lg:grid-cols-4 lg:auto-rows-auto lg:gap-8"
+          >
+            {
+              data.creations.map((creation) => (
+                <a
+                  href="#"
+                  class={`flex items-end relative p-5 bg-linear-to-r from-black/60 to-black/0 to-75% lg:aspect-[0.57] md:px-10 xl:px-10 xl:py-8`}
+                >
+                  <picture class="absolute inset-0 w-full h-full -z-50 ">
+                    <source
+                      srcset={creation.images.desktop}
+                      media="(min-width: 64rem)"
+                    />
+                    <source srcset={creation.images.mobile} />
+                    <img
+                      class="h-full w-full object-cover object-top"
+                      src={creation.images.mobile}
+                    />
+                  </picture>
+                  <div class="">
+                    <span
+                      set:html={creation.html}
+                      class="heading text-2xl text-white xl:text-3xl"
+                    />
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+          <div class="grid place-items-center mt-8">
+            <a
+              href="#"
+              class="xl:hidden px-[2.857em] py-[0.929em] text-[0.875rem] tracking-[0.357em] uppercase border border-black"
+            >
+              See All
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-14 bg-black text-white md:py-11">
+      <div
+        class="flex flex-col items-center gap-10 constrained md:flex-row md:justify-between"
+      >
+        <nav class="flex flex-col items-center gap-10 md:items-start md:gap-6">
+          <a href="#" aria-label="Home">
+            <LogoSVG class="w-[9rem]" aria-hidden="true" />
+          </a>
+          <div
+            class="flex flex-col items-center gap-4 md:flex-row md:flex-wrap"
+          >
+            {data.links.map((link) => <a href="#">{link}</a>)}
+          </div>
+        </nav>
+        <div
+          class="shrink-0 flex flex-col items-center gap-4 md:items-end md:gap-6"
+        >
+          <div class="flex items-center gap-4">
+            {
+              data.socials.map((social) => (
+                <a href="#">
+                  <span class="sr-only">{social.label}</span>
+                  <img src={social.iconSrc} class="w-6" aria-hidden="true" />
+                </a>
+              ))
+            }
+          </div>
+          <p class="opacity-50">
+            &copy; 2021 Loopstudios. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

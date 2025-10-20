@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Alata", sans-serif;
+  --font-heading: "Josefin Sans", sans-serif;
+
+  --text-base: 0.9375rem;
+  --text-3xl: 2rem;
+
+  --container-desktop: 69.375rem;
+}
+
+@layer components {
+  .constrained {
+    --padding-inline: --spacing(6);
+
+    margin-inline: auto;
+    max-width: min(var(--container-desktop), 100% - 2 * var(--padding-inline));
+
+    @media (min-width: 48em) {
+      --padding-inline: --spacing(20);
+    }
+  }
+
+  .heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    font-weight: 300;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+}
