@@ -1,7 +1,6 @@
 import { motion, type HTMLElements, type HTMLMotionProps } from "motion/react";
 import type { PropsWithChildren } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import DynamicTag from "./DynamicTag";
 
 type TransitionOnViewProps<Tag extends keyof HTMLElements> = {
   media?: string;
@@ -13,21 +12,23 @@ export function TransitionOnView<Tag extends keyof HTMLElements = "div">({
   children,
   media,
   as,
+  initial,
+  whileInView,
   ...rest
 }: TransitionOnViewProps<Tag>) {
   const enabled = useMediaQuery(media ?? "(min-width: 20rem)");
 
   const Elem = motion[as];
 
-  return enabled ? (
+  return (
     //@ts-ignore
-    <Elem viewport={{ once: true }} {...rest}>
+    <Elem
+      viewport={{ once: true }}
+      initial={enabled ? initial : whileInView}
+      whileInView={whileInView}
+      {...rest}
+    >
       {children}
     </Elem>
-  ) : (
-    //@ts-ignore
-    <DynamicTag as={as} {...rest}>
-      {children}
-    </DynamicTag>
   );
 }
