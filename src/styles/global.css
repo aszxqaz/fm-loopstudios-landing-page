@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 @theme {
+  --color-gray-200: rgb(216, 216, 216);
+  --color-blue-100: rgb(229, 234, 241);
+  --color-blue-50: rgb(246, 250, 255);
+
   --font-sans: "Alata", sans-serif;
   --font-heading: "Josefin Sans", sans-serif;
 

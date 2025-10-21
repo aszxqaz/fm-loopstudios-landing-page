@@ -1,0 +1,10 @@
+---
+const { to } = Astro.props;
+---
+
+<a
+  href={to}
+  class="relative before:absolute before:-bottom-2 before:left-1/2 before:-translate-x-1/2 before:w-6 before:h-0.5 before:bg-transparent hover:before:bg-white"
+>
+  <slot />
+</a>

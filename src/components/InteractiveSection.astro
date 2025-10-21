@@ -1,35 +1,62 @@
 ---
 import { getUrl } from "../util/util";
+import { TransitionOnView } from "./TransitionOnView";
 ---
 
 <section id="interactive" class="constrained my-24 xl:my-40">
   <div class="mx-auto max-w-4xl xl:overflow-clip xl:max-w-[69.375rem]">
-    <div class="flex flex-col xl:flex-row xl:items-end xl:-mr-40">
+    <TransitionOnView
+      as="div"
+      client:load
+      media="(max-width: calc(80rem - 1px))"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      className="flex flex-col xl:flex-row xl:items-end xl:-mr-40"
+    >
       <div class="xl:flex-54">
         <div class="xl:-ml-40 xl:mr-40">
-          <div
-            class="text-center bg-white pt-12 px-6 md:px-0 xl:text-start xl:pl-24 xl:pt-24"
+          <TransitionOnView
+            as="div"
+            client:load
+            media="(min-width: 80rem)"
+            initial={{ x: 256, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h2 class="heading mb-6 md:text-5xl text-balance">
-              The leader in interactive VR
-            </h2>
-            <p
-              class="leading-[1.65] opacity-50 max-xl:max-w-2xl max-xl:mx-auto"
+            <div
+              class="text-center bg-white pt-12 px-6 md:px-0 xl:text-start xl:pl-24 xl:pt-24"
             >
-              Founded in 2011, Loopstudios has been producing world-class
-              virtual reality projects for some of the best companies around the
-              globe. Our award-winning creations have transformed businesses
-              through digital experiences that bind to their brand.
-            </p>
-          </div>
+              <h2 class="heading mb-6 md:text-5xl text-balance">
+                The leader in interactive VR
+              </h2>
+              <p
+                class="leading-[1.65] opacity-50 max-xl:max-w-2xl max-xl:mx-auto"
+              >
+                Founded in 2011, Loopstudios has been producing world-class
+                virtual reality projects for some of the best companies around
+                the globe. Our award-winning creations have transformed
+                businesses through digital experiences that bind to their brand.
+              </p>
+            </div>
+          </TransitionOnView>
         </div>
       </div>
-      <div data-image class="-order-1 xl:flex-73">
-        <img
-          src={getUrl("/images/desktop/interactive.jpg")}
-          class="w-full h-[284px] xl:h-[500px] object-cover object-top"
-        />
+      <div class="-order-1 xl:flex-73">
+        <TransitionOnView
+          as="div"
+          client:load
+          media="(min-width: 80rem)"
+          initial={{ x: -256, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          <img
+            src={getUrl("/images/desktop/interactive.jpg")}
+            class="w-full h-[284px] xl:h-[500px] object-cover object-top"
+          />
+        </TransitionOnView>
       </div>
-    </div>
+    </TransitionOnView>
   </div>
 </section>

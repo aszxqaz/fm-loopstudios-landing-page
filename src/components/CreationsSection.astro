@@ -1,29 +1,40 @@
 ---
 import data from "../data.json";
 import { getUrl } from "../util/util";
+import Button from "./Button.astro";
+import { TransitionOnView } from "./TransitionOnView";
 ---
 
 <section class="my-24 xl:my-40">
-  <div class="constrained md:py-5">
+  <TransitionOnView
+    client:load
+    media="(max-width: calc(80rem - 1px))"
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    transition={{ duration: 1, ease: "easeOut" }}
+    as="div"
+    className="constrained md:py-5"
+  >
     <div
       class="flex justify-center xl:justify-between items-center mb-12 md:mb-8 xl:mb-20"
     >
       <h2 class="heading text-center md:text-5xl">Our creations</h2>
-      <a
-        href="#"
-        class="max-xl:hidden px-[2.857em] py-[0.929em] text-[0.875rem] tracking-[0.357em] uppercase border border-black"
-      >
-        See All
-      </a>
+      <Button href="#" class="max-xl:hidden">See All</Button>
     </div>
     <div
       class="grid auto-rows-[7.5rem] gap-6 lg:grid-cols-4 lg:auto-rows-auto lg:gap-8"
     >
       {
-        data.creations.map((creation) => (
-          <a
+        data.creations.map((creation, i) => (
+          <TransitionOnView
+            client:load
+            media="(min-width: 80rem)"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
+            as="a"
             href="#"
-            class={`flex items-end relative p-5 bg-linear-to-r from-black/70 to-black/0 to-75% lg:aspect-[0.57] md:px-10 xl:px-10 xl:py-8`}
+            className="group relative isolate flex items-end p-5 md:px-10 xl:px-10 xl:py-8 lg:aspect-[0.57] "
           >
             <picture class="absolute inset-0 w-full h-full -z-50 ">
               <source
@@ -39,20 +50,16 @@ import { getUrl } from "../util/util";
             <div class="">
               <span
                 set:html={creation.html}
-                class="heading text-2xl text-white xl:text-3xl"
+                class="heading text-2xl text-white xl:text-3xl transition-colors group-hover:text-black"
               />
             </div>
-          </a>
+            <div class="absolute -z-10 inset-0 bg-linear-to-r from-black/60 to-black/0 to-72% hover:from-white/75 hover:to-white/75 transition-colors lg:bg-linear-to-t" />
+          </TransitionOnView>
         ))
       }
     </div>
     <div class="grid place-items-center mt-8">
-      <a
-        href="#"
-        class="xl:hidden px-[2.857em] py-[0.929em] text-[0.875rem] tracking-[0.357em] uppercase border border-black"
-      >
-        See All
-      </a>
+      <Button as="a" href="#" class="xl:hidden"> See All </Button>
     </div>
-  </div>
+  </TransitionOnView>
 </section>

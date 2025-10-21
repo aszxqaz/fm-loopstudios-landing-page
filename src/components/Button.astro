@@ -1,0 +1,13 @@
+---
+const { as: El = "button", class: className, ...props } = Astro.props;
+---
+
+<El
+  class:list={[
+    "px-[2.7em] py-[0.6em] text-[0.875rem] tracking-[0.357em] uppercase border border-black cursor-pointer",
+    "hover:bg-black hover:text-white transition-colors",
+    className,
+  ]}
+>
+  See All
+</El>

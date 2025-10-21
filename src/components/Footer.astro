@@ -1,6 +1,7 @@
 ---
 import LogoSVG from "../assets/icons/logo.svg";
 import data from "../data.json";
+import NavLink from "./NavLink.astro";
 ---
 
 <footer class="py-14 bg-black text-white md:py-11">
@@ -12,7 +13,7 @@ import data from "../data.json";
         <LogoSVG class="w-[9rem]" aria-hidden="true" />
       </a>
       <div class="flex flex-col items-center gap-4 md:flex-row md:flex-wrap">
-        {data.links.map((link) => <a href="#">{link}</a>)}
+        {data.links.map((link) => <NavLink to="#">{link}</NavLink>)}
       </div>
     </nav>
     <div

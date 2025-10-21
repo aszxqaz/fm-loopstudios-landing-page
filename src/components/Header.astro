@@ -4,6 +4,8 @@ import heroImageDesktop from "../assets/images/desktop/image-hero.jpg";
 import heroImageMobile from "../assets/images/mobile/image-hero.jpg";
 import data from "../data.json";
 import MenuToggle from "./MenuToggle";
+import NavLink from "./NavLink.astro";
+import { TransitionOnView } from "./TransitionOnView";
 ---
 
 <header class="min-h-screen relative bg-black/40 text-white">
@@ -30,13 +32,7 @@ import MenuToggle from "./MenuToggle";
           <LogoSVG class="w-[9rem] md:w-[12rem]" aria-hidden="true" />
         </a>
         <div class="hidden xl:flex xl:gap-8">
-          {
-            data.links.map((link) => (
-              <a href="#" class="">
-                {link}
-              </a>
-            ))
-          }
+          {data.links.map((link) => <NavLink to="#">{link}</NavLink>)}
         </div>
         <div class="xl:hidden">
           <MenuToggle client:load links={data.links} />
@@ -45,13 +41,19 @@ import MenuToggle from "./MenuToggle";
       <div
         class="pointer-events-none absolute inset-0 grid items-center justify-center xl:justify-start"
       >
-        <div
-          class="my-auto pt-5 pb-3 px-6 border-2 border-white md:p-10 md:pb-6 max-w-[21.25rem] md:max-w-[40.625rem] md:mb-[22vh]"
+        <TransitionOnView
+          as="div"
+          client:load
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "linear" }}
+          className="my-auto pt-5 pb-3 px-6 border-2 border-white md:p-10 md:pb-6 max-w-[21.25rem] md:max-w-[40.625rem] md:mb-[22vh] opacity-0"
         >
           <p class="heading text-[2.5rem] text-balance md:text-7xl">
             {data.hero.title}
           </p>
-        </div>
+        </TransitionOnView>
       </div>
     </div>
   </div>
