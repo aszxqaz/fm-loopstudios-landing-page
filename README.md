@@ -19,8 +19,8 @@ This is a solution to the [Loopstudios landing page challenge on Frontend Mentor
 
 ### Links
 
-- Solution URL: [https://github.com/aszxqaz/fm-fm-loopstudios-landing-page](https://github.com/aszxqaz/fm-fm-loopstudios-landing-page)
-- Live Site URL: [https://aszxqaz.github.io/fm-fm-loopstudios-landing-page](https://aszxqaz.github.io/fm-fm-loopstudios-landing-page)
+- Solution URL: [https://github.com/aszxqaz/fm-loopstudios-landing-page](https://github.com/aszxqaz/fm-loopstudios-landing-page)
+- Live Site URL: [https://aszxqaz.github.io/fm-loopstudios-landing-page](https://aszxqaz.github.io/fm-loopstudios-landing-page)
 
 ## My process
 
