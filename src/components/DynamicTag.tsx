@@ -1,6 +1,4 @@
-import type { HTMLElements } from "motion/react";
-
-type PolymorphicProps<E extends keyof HTMLElements> = React.PropsWithChildren<
+type PolymorphicProps<E extends React.ElementType> = React.PropsWithChildren<
   React.ComponentPropsWithoutRef<E> & { as?: E }
 >;
 
