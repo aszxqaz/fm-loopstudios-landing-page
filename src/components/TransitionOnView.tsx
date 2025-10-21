@@ -18,6 +18,8 @@ export function TransitionOnView<Tag extends keyof HTMLElements = "div">({
 }: TransitionOnViewProps<Tag>) {
   const enabled = useMediaQuery(media ?? "(min-width: 20rem)");
 
+  console.log(initial, enabled);
+
   const Elem = motion[as];
 
   return (

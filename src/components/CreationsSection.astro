@@ -7,7 +7,7 @@ import { TransitionOnView } from "./TransitionOnView";
 
 <section class="my-24 xl:my-40">
   <TransitionOnView
-    client:load
+    client:only
     media="(max-width: calc(80rem - 1px))"
     initial={{ opacity: 0 }}
     whileInView={{ opacity: 1 }}
@@ -27,7 +27,7 @@ import { TransitionOnView } from "./TransitionOnView";
       {
         data.creations.map((creation, i) => (
           <TransitionOnView
-            client:load
+            client:only
             media="(min-width: 80rem)"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -47,12 +47,10 @@ import { TransitionOnView } from "./TransitionOnView";
                 src={getUrl(creation.images.mobile)}
               />
             </picture>
-            <div class="">
-              <span
-                set:html={creation.html}
-                class="heading text-2xl text-white xl:text-3xl transition-colors group-hover:text-black"
-              />
-            </div>
+            <div
+              set:html={creation.html}
+              class="heading text-2xl text-white xl:text-3xl transition-colors group-hover:text-black pointer-events-none"
+            />
             <div class="absolute -z-10 inset-0 bg-linear-to-r from-black/60 to-black/0 to-72% hover:from-white/75 hover:to-white/75 transition-colors lg:bg-linear-to-t" />
           </TransitionOnView>
         ))

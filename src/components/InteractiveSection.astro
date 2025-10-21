@@ -7,7 +7,7 @@ import { TransitionOnView } from "./TransitionOnView";
   <div class="mx-auto max-w-4xl xl:overflow-clip xl:max-w-[69.375rem]">
     <TransitionOnView
       as="div"
-      client:load
+      client:only
       media="(max-width: calc(80rem - 1px))"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -17,7 +17,7 @@ import { TransitionOnView } from "./TransitionOnView";
       <div class="xl:flex-54">
         <TransitionOnView
           as="div"
-          client:load
+          client:only
           media="(min-width: 80rem)"
           initial={{ x: 256, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
@@ -45,7 +45,7 @@ import { TransitionOnView } from "./TransitionOnView";
       <div class="-order-1 xl:flex-73">
         <TransitionOnView
           as="div"
-          client:load
+          client:only
           media="(min-width: 80rem)"
           initial={{ x: -256, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
